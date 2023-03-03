@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3sdyh1s6xsi5"]
+
+[ext_resource type="PackedScene" uid="uid://qq7mj5wddb3k" path="res://Player/player_ball.tscn" id="1_pr153"]
+[ext_resource type="Script" path="res://game_ui.gd" id="2_vla73"]
+
+[node name="Game" type="Node2D"]
+
+[node name="PlayerBall" parent="." instance=ExtResource("1_pr153")]
+max_power = 1000.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 78.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+script = ExtResource("2_vla73")
+
+[node name="PowerLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Power"
+
+[connection signal="power_changed" from="PlayerBall" to="GridContainer" method="_on_player_ball_power_changed"]

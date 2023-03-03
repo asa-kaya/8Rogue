@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://qq7mj5wddb3k"]
+
+[ext_resource type="Script" path="res://Player/player_ball.gd" id="1_hi511"]
+[ext_resource type="Texture2D" uid="uid://dfdlj0bdh75b2" path="res://Sprites/cueball.png" id="1_nq5y4"]
+[ext_resource type="PackedScene" uid="uid://dirpwvj5tp7s1" path="res://Player/stick.tscn" id="2_58rro"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fxml4"]
+radius = 14.0
+
+[node name="PlayerBall" type="RigidBody2D"]
+position = Vector2(559, 304)
+mass = 0.17
+lock_rotation = true
+script = ExtResource("1_hi511")
+min_power = 5.0
+max_power = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_nq5y4")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+shape = SubResource("CircleShape2D_fxml4")
+metadata/_edit_lock_ = true
+
+[node name="Stick" parent="." instance=ExtResource("2_58rro")]
